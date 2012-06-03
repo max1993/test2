@@ -42,37 +42,8 @@ mysqli_free_result($query);
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>My Website</title>
-<style type="text/css">
-<!--
-body,td,th {
-	font-family: Arial Black, Gadget, sans-serif;
-	font-size: 12px;
-}
-body {
-	background-image: url(files/style/stripBG.jpg);
-	background-repeat: repeat-x;
-	color:#FFF;
-	background-color: #996600;
-}
-a:link {
-	color: #FBE7B7;
-	text-decoration: none;
-}
-a:visited {
-	text-decoration: none;
-	color: #FBE7B7;
-}
-a:hover {
-	text-decoration: underline;
-	color: #FFF;
-}
-a:active {
-	text-decoration:none;
-	color: #FFF;
-}
--->
-</style></head>
-
+<link rel="stylesheet" href="files/style/main.css">
+</head>
 <body>
 <table width="888" border="0" align="center" cellpadding="6">
   <tr>

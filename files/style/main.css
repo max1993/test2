@@ -1,0 +1,26 @@
+body,td,th {
+	font-family: Arial Black, Gadget, sans-serif;
+	font-size: 12px;
+}
+body {
+	background-image: url(stripBG.jpg);
+	background-repeat: repeat-x;
+	color:#FFF;
+	background-color: #996600;
+}
+a:link {
+	color: #FBE7B7;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #FBE7B7;
+}
+a:hover {
+	text-decoration: underline;
+	color: #FFF;
+}
+a:active {
+	text-decoration:none;
+	color: #FFF;
+}
