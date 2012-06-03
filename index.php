@@ -1,41 +1,39 @@
 <?php
 session_start();
 require_once "files/scripts/connect_to_mysql.php";
-if (!$_GET['pid']) {
+if (!isset($_GET['pid'])) {
 	$pageid = '1';
 } else {
 	$pageid = ereg_replace("[^0-9]", "", $_GET['pid']); // filter everything but numbers for security
 }
-$sqlCommand = "SELECT pagebody FROM pages WHERE id='$pageid' LIMIT 1"; 
-$query = mysqli_query($myConnection, $sqlCommand) or die (mysqli_error()); 
-while ($row = mysqli_fetch_array($query)) { 
+$sqlCommand = "SELECT pagebody FROM pages WHERE id='$pageid' LIMIT 1";
+$query = mysql_query($sqlCommand, $myConnection) or die (mysql_error());
+while ($row = mysql_fetch_array($query)) { 
     $body = $row["pagebody"];
-} 
-mysqli_free_result($query); 
+}
+mysql_free_result($query); 
 $sqlCommand = "SELECT modulebody FROM modules WHERE showing='1' AND name='footer' LIMIT 1"; 
-$query = mysqli_query($myConnection, $sqlCommand) or die (mysqli_error()); 
-while ($row = mysqli_fetch_array($query)) { 
+$query = mysql_query($myConnection, $sqlCommand) or die (mysql_error()); 
+while ($row = mysql_fetch_array($query)) { 
     $footer = $row["modulebody"];
 }
-mysqli_free_result($query); 
+mysql_free_result($query); 
 $sqlCommand = "SELECT modulebody FROM modules WHERE showing='1' AND name='custom1' LIMIT 1"; 
-$query = mysqli_query($myConnection, $sqlCommand) or die (mysqli_error()); 
-while ($row = mysqli_fetch_array($query)) { 
+$query = mysql_query($myConnection, $sqlCommand) or die (mysql_error()); 
+while ($row = mysql_fetch_array($query)) { 
     $custom1 = $row["modulebody"];
 } 
-mysqli_free_result($query); 
+mysql_free_result($query); 
 $sqlCommand = "SELECT id, linklabel FROM pages WHERE showing='1' ORDER BY id ASC"; 
-$query = mysqli_query($myConnection, $sqlCommand) or die (mysqli_error()); 
+$query = mysql_query($myConnection, $sqlCommand) or die (mysql_error()); 
 
 $menuDisplay = '';
-while ($row = mysqli_fetch_array($query)) { 
-    $pid = $row["id"];
-    $linklabel = $row["linklabel"];
-	
-	$menuDisplay .= '<a href="index.php?pid=' . $pid . '">' . $linklabel . '</a><br />';
-	
+while ($row = mysql_fetch_array($query)){
+  $pid = $row["id"];
+  $linklabel = $row["linklabel"];	
+	$menuDisplay .= '<a href="index.php?pid=' . $pid . '">' . $linklabel . '</a><br />';	
 } 
-mysqli_free_result($query); 
+mysql_free_result($query); 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
